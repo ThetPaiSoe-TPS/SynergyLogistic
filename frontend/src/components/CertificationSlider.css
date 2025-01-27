@@ -1,0 +1,71 @@
+.certification-slider-container {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  padding: 20px 0;
+}
+
+.slider {
+  position: relative;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(250px * 12); /* Adjusted for 6 logos × 2 for loop */
+  animation: scroll 30s linear infinite; /* Adjusted timing */
+}
+
+.slide {
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 180px;  /* Adjusted for local images */
+  height: 140px; /* Added fixed height */
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.slide img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1); /* Added zoom effect on hover */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 6)); /* Half of total width */
+  }
+}
+
+/* Pause animation on hover */
+.slider:hover .slide-track {
+  animation-play-state: paused;
+}
+
+/* Add gradient fade effect on edges */
+.certification-slider-container::before,
+.certification-slider-container::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+}
+
+.certification-slider-container::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.certification-slider-container::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+} 
