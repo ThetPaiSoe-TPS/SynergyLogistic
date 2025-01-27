@@ -76,23 +76,25 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Email or password is incorrect' });
     }
 
+    console.log('User found:', user); // Debug log
     const validPassword = await bcrypt.compare(req.body.password, user.password);
+    console.log('Password valid:', validPassword); // Debug log
     if (!validPassword) {
       return res.status(400).json({ message: 'Email or password is incorrect' });
     }
 
-    // Create token with isAdmin status
+    // Create token with user information
     const token = jwt.sign(
       { 
         id: user._id,
         email: user.email,
         companyName: user.companyName,
-        isAdmin: user.isAdmin  // Make sure this is included
+        isAdmin: user.isAdmin
       }, 
       process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
-    
+
     res.json({ 
       message: 'Login successful',
       token,
@@ -100,7 +102,7 @@ router.post('/login', async (req, res) => {
         id: user._id,
         email: user.email,
         companyName: user.companyName,
-        isAdmin: user.isAdmin  // Make sure this is included
+        isAdmin: user.isAdmin
       }
     });
   } catch (error) {

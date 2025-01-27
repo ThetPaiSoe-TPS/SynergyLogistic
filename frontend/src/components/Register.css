@@ -252,4 +252,22 @@
   .register-button {
     padding: 16px;
   }
+}
+
+/* Add styles for the password input and icons */
+
+.password-container {
+  position: relative; /* Positioning for the icon */
+}
+
+.password-input {
+  padding-right: 40px; /* Space for the icon */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px; /* Position the icon inside the input */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer; /* Change cursor to pointer */
 } 

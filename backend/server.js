@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Set strictQuery before connection
+// Set strictQuery to false to suppress the warning
 mongoose.set('strictQuery', false);
 
 // Middleware

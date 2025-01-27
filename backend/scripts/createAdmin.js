@@ -5,12 +5,16 @@ const User = require('../models/User');
 
 async function createAdmin() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
     
     // Check if admin already exists
     const adminExists = await User.findOne({ email: 'admin@synergy.com' });
     if (adminExists) {
-      console.log('Admin user already exists');
+      console.log('Admin user already exists. Updating user...');
+      // Optionally update the existing user
+      adminExists.password = await bcrypt.hash('admin123', 10); // Update password if needed
+      await adminExists.save();
+      console.log('Admin user updated successfully');
       process.exit(0);
     }
 

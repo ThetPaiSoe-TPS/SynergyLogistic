@@ -13,11 +13,13 @@ function Footer() {
             className="footer-logo" 
           />
           <div className="footer-address">
-            <h3>Synergy Headquarters</h3>
-            <p>345 Plato Blvd E</p>
-            <p>Saint Paul, MN</p>
-            <p>55107</p>
-            <p className="phone">612.623.1200</p>
+            <div className="footer-info">
+              <h3>Synergy Headquarters</h3>
+              <p>345 Plato Blvd E</p>
+              <p>Saint Paul, MN</p>
+              <p>55107</p>
+              <p className="phone">612.623.1200</p>
+            </div>
           </div>
         </div>
 

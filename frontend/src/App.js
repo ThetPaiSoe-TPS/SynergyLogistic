@@ -14,6 +14,8 @@ import Logistics from './components/Logistics';
 import AdminDashboard from './components/AdminDashboard';
 import Profile from './components/Profile';
 import Settings from './components/Settings';
+import EditUser from './components/EditUser';
+import RequestQuote from './components/RequestQuote';
 import './App.css';
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/admin/edit-user/:id" element={<EditUser />} />
+            <Route path="/request-quote" element={<RequestQuote />} />
           </Routes>
         </main>
         <Footer />

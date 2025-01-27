@@ -1,18 +1,21 @@
 .certification-slider-container {
   width: 100%;
   overflow: hidden;
-  background: white;
-  padding: 20px 0;
+  background: linear-gradient(135deg, #f8f9fa, #f4f4f4); /* Updated background */
+  padding: 40px 0;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.03);
 }
 
 .slider {
   position: relative;
+  padding: 20px 0;
 }
 
 .slide-track {
   display: flex;
-  width: calc(250px * 12); /* Adjusted for 6 logos × 2 for loop */
-  animation: scroll 30s linear infinite; /* Adjusted timing */
+  width: calc(250px * 12); /* Keep the original width calculation */
+  animation: scroll 30s linear infinite; /* Keep the original animation */
 }
 
 .slide {
@@ -21,19 +24,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .slide img {
-  width: 180px;  /* Adjusted for local images */
-  height: 140px; /* Added fixed height */
+  width: 140px;  /* Reduced from 180px */
+  height: 100px; /* Reduced from 140px */
   object-fit: contain;
   filter: grayscale(100%);
-  transition: all 0.3s ease;
+  opacity: 0.7;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
 }
 
 .slide img:hover {
   filter: grayscale(0%);
-  transform: scale(1.1); /* Added zoom effect on hover */
+  transform: scale(1.15);
+  opacity: 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes scroll {
@@ -50,22 +58,23 @@
   animation-play-state: paused;
 }
 
-/* Add gradient fade effect on edges */
+/* Enhanced gradient fade effect on edges */
 .certification-slider-container::before,
 .certification-slider-container::after {
   content: "";
   position: absolute;
-  width: 100px;
+  width: 150px; /* Increased from 100px */
   height: 100%;
   z-index: 2;
+  top: 0;
 }
 
 .certification-slider-container::before {
   left: 0;
-  background: linear-gradient(to right, white, transparent);
+  background: linear-gradient(to right, #f8f9fa, transparent);
 }
 
 .certification-slider-container::after {
   right: 0;
-  background: linear-gradient(to left, white, transparent);
+  background: linear-gradient(to left, #f8f9fa, transparent);
 } 

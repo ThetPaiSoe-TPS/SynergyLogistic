@@ -29,10 +29,13 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 60px;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 100px;
+  display: flex;
+  flex-direction: column;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  white-space: nowrap;
 }
 
 /* Left Section Enhancement */
@@ -42,6 +45,7 @@
   gap: 50px;
   padding-right: 60px;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
 }
 
 .footer-logo {
@@ -63,6 +67,12 @@
 }
 
 .footer-address {
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
   padding-left: 25px;
   background: rgba(255, 255, 255, 0.02);
@@ -70,6 +80,7 @@
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
+  white-space: nowrap;
 }
 
 .footer-address h3 {
@@ -81,6 +92,8 @@
   letter-spacing: 0.5px;
   position: relative;
   padding-bottom: 15px;
+  margin-right: 20px;
+  margin: 0 10px;
 }
 
 .footer-address h3::after {
@@ -107,6 +120,7 @@
   letter-spacing: 0.3px;
   position: relative;
   z-index: 1;
+  margin: 0 10px;
 }
 
 .footer-address p:hover {
@@ -461,4 +475,64 @@
     width: 100%;
     padding: 16px 24px;
   }
+}
+
+/* Add styles to display footer text in one column without wrapping */
+
+.footer-container p {
+  margin: 0; /* Remove default margin */
+}
+
+/* Add styles to display text in one row without wrapping */
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0;
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.footer-info::-webkit-scrollbar {
+  display: none;
+}
+
+.footer-info h3,
+.footer-info p {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 16px;
+  color: #b0b0b0;
+}
+
+.footer-info h3 {
+  font-size: 20px;
+  color: #fff;
+  margin-right: 20px;
+  position: relative;
+}
+
+.footer-info h3::after {
+  content: '|';
+  position: absolute;
+  right: -12px;
+  color: #006B3F;
+}
+
+.footer-info p:not(:last-child)::after {
+  content: '|';
+  margin: 0 10px;
+  color: #006B3F;
+}
+
+.footer-info .phone {
+  color: #00A15D;
+  font-weight: 600;
 } 

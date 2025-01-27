@@ -14,7 +14,7 @@ import {
   ctaBgImage
 } from '../assets/images';
 import CertificationSlider from './CertificationSlider';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Home() {
   const navigate = useNavigate();
@@ -122,9 +122,7 @@ function Home() {
         backgroundPosition: 'center'
       }}>
         <h2>READY TO MOVE YOUR BUSINESS FORWARD?</h2>
-        <button className="cta-button">
-          REQUEST A QUOTE
-        </button>
+        <Link to="/request-quote" className="cta-button">Request a Quote</Link>
       </section>
 
       {/* Certifications Section */}

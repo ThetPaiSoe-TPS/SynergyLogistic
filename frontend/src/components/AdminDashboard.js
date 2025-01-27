@@ -53,6 +53,35 @@ function AdminDashboard() {
     }
   };
 
+  const handleEdit = (userId) => {
+    console.log('Editing user with ID:', userId);
+    navigate(`/admin/edit-user/${userId}`);
+  };
+
+  const handleDelete = async (userId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to delete user');
+      }
+
+      // Remove the deleted user from the state
+      setUsers(users.filter(user => user._id !== userId));
+    } catch (err) {
+      console.error('Error deleting user:', err);
+      setError(err.message);
+    }
+  };
+
   // Sample data for charts
   const revenueData = [
     { month: 'Jan', revenue: 650000 },
@@ -315,12 +344,8 @@ function AdminDashboard() {
                             <td>{`${user.city}, ${user.state}`}</td>
                             <td>{user.isAdmin ? 'Admin' : 'User'}</td>
                             <td>
-                              <button className="action-btn edit">
-                                <i className="fas fa-edit"></i>
-                              </button>
-                              <button className="action-btn delete">
-                                <i className="fas fa-trash"></i>
-                              </button>
+                              <button onClick={() => handleEdit(user._id)}>Edit</button>
+                              <button onClick={() => handleDelete(user._id)}>Delete</button>
                             </td>
                           </tr>
                         ))}
